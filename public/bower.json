@@ -1,0 +1,18 @@
+{
+  "name": "MyMoney",
+  "version": "1.0.0",
+  "authors": [
+    "Lucas Amaral <lucas.amaral.dw@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.15",
+    "angular-route": "~1.3.15",
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.3",
+    "sweetalert": "~0.5.0",
+    "underscore": "~1.8.3",
+    "angular-bootstrap-datetimepicker": "~0.3.12",
+    "angular-chart.js": "~0.7.1"
+  }
+}

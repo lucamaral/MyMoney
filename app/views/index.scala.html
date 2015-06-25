@@ -1,0 +1,87 @@
+@(nomeDoUsuario : String)
+
+@main("myMoneyApp"){
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">
+              MyMoney
+           </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+             <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/receitas/tipos">
+                        Tipos de Receitas
+                    </a>
+                </li>
+                <li>
+                    <a href="#/despesas/grupos">
+                        Grupos de Despesas
+                    </a>
+                </li>
+                <li>
+                    <a href="#/reservas">
+                        Reservas
+                    </a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li ng-controller="SaldoController">
+                        <a>
+                            Saldo: {{saldo.valor | currency}}
+                        </a>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          <span class="glyphicon glyphicon-user"></span>
+                          <span id="nomeDoUsuario"> @nomeDoUsuario </span>
+                          <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                            <li>
+                                    <a href="#/minha-conta">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        Minha conta
+                                    </a>
+                            </li>
+                            <li>
+                                    <a href="#/minha-conta/alterar-senha">
+                                        <span class="glyphicon glyphicon-briefcase"></span>
+                                        Alterar minha senha
+                                    </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-asterisk"></span>
+                                    Configurações
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                    <a href="/login">
+                                        <span class="glyphicon glyphicon-off"></span>
+                                        Logout
+                                    </a>
+                            </li>
+                      </ul>
+                    </li>
+             </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div ng-view></div>
+          </div>
+      </div>
+    </div>
+    <script src="@routes.Assets.at("dist/js/index.js")"></script>
+}

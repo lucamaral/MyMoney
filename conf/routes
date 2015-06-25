@@ -1,0 +1,70 @@
+# Pages
+GET	   /login						                        @controllers.Application.telaLogin()
+GET    /							                        @controllers.Application.inicio()
+
+# Login
+POST   /login                                               @controllers.LoginController.logar()
+
+###### AJAX ######
+
+# Usuario
+POST   /api/usuarios				                        @apis.UsuarioAPI.novo()
+GET    /api/usuarios/sessao                          		@apis.UsuarioAPI.buscarUsuarioDaSessao()
+POST   /api/usuarios/sessao                          		@apis.UsuarioAPI.atualizarUsuarioDaSessao()
+POST   /api/usuarios/sessao/senha          			    	@apis.UsuarioAPI.atualizarSenhaUsuarioDaSessao()
+DELETE /api/usuarios/sessao									@apis.UsuarioAPI.removerConta()
+
+# Tipos de receitas
+GET	   /api/receitas/tipos									@apis.ReceitaTipoAPI.buscar()
+GET	   /api/receitas/tipos/:codigo							@apis.ReceitaTipoAPI.buscarPeloId(codigo : Long)
+POST   /api/receitas/tipos									@apis.ReceitaTipoAPI.novo()
+DELETE /api/receitas/tipos/:codigo							@apis.ReceitaTipoAPI.remover(codigo : Long)
+PUT	   /api/receitas/tipos									@apis.ReceitaTipoAPI.atualizar()
+
+# Grupos de despesas
+GET	   /api/despesas/grupos									@apis.DespesaGrupoAPI.buscar()
+POST   /api/despesas/grupos									@apis.DespesaGrupoAPI.novo()
+DELETE /api/despesas/grupos/:codigo							@apis.DespesaGrupoAPI.remover(codigo : Long)
+PUT	   /api/despesas/grupos									@apis.DespesaGrupoAPI.atualizar()
+GET	   /api/despesas/grupos/:codigo							@apis.DespesaGrupoAPI.buscarPeloId(codigo : Long)
+
+# Tipos de despesas
+GET	   /api/despesas/grupos/:idDespesaGrupo/tipos			@apis.DespesaTipoAPI.buscar(idDespesaGrupo : Long)
+POST   /api/despesas/grupos/:idDespesaGrupo/tipos			@apis.DespesaTipoAPI.novo(idDespesaGrupo : Long)
+DELETE /api/despesas/grupos/:idDespesaGrupo/tipos/:codigo	@apis.DespesaTipoAPI.remover(idDespesaGrupo : Long, codigo : Long)
+PUT	   /api/despesas/grupos/:idDespesaGrupo/tipos			@apis.DespesaTipoAPI.atualizar(idDespesaGrupo : Long)
+GET   /api/despesas/grupos/:idDespesaGrupo/tipos/:idDespesaTipo @apis.DespesaTipoAPI.buscarPeloId(idDespesaGrupo : Long, idDespesaTipo : Long)
+
+# Receitas
+GET	   /api/receitas/tipos/:idReceitaTipo/receitas  		@apis.ReceitaAPI.buscar(idReceitaTipo : Long)
+GET	   /api/receitas/tipos/:idReceitaTipo/receitas/:idReceita  		@apis.ReceitaAPI.buscarPeloId(idReceitaTipo : Long, idReceita : Long)
+POST /api/receitas/tipos/:idReceitaTipo/receitas                           @apis.ReceitaAPI.salvar(idReceitaTipo : Long)
+DELETE /api/receitas/tipos/:idReceitaTipo/receitas/:idReceita   @apis.ReceitaAPI.remover(idReceitaTipo: Long, idReceita : Long)
+
+# Despesas
+GET        /api/despesas/grupos/:idDespesaGrupo/tipos/:idDespesaTipo/despesas  @apis.DespesaAPI.buscar(idDespesaGrupo : Long, idDespesaTipo : Long)
+GET        /api/despesas/grupos/:idDespesaGrupo/tipos/:idDespesaTipo/despesas/:idDespesa  @apis.DespesaAPI.buscarPeloId(idDespesaGrupo : Long, idDespesaTipo : Long, idDespesa : Long)
+POST     /api/despesas/grupos/:idDespesaGrupo/tipos/:idDespesaTipo/despesas  @apis.DespesaAPI.salvar(idDespesaGrupo : Long, idDespesaTipo : Long)
+DELETE  /api/despesas/grupos/:idDespesaGrupo/tipos/:idDespesaTipo/despesas/:idDespesa  @apis.DespesaAPI.remover(idDespesaGrupo : Long, idDespesaTipo : Long, idDespesa : Long)
+GET        /api/despesas/para-pagar                                                                                                       @apis.DespesaAPI.buscarDespesasParaPagar()
+
+# Formas de pagamento
+GET    /api/formas-pagamento                                                  @apis.FormasPagamentoAPI.buscar()
+
+# Saldo
+GET    /api/saldo                                                                              @apis.SaldoAPI.buscar()
+PUT   /api/saldo                                                                                @apis.SaldoAPI.atualizar()
+
+# Acumulado
+GET   /api/acumulado/receitas/tipos                                         @apis.AcumuladoReceitasAPI.buscarTipos()
+GET   /api/acumulado/despesas/grupos                                  @apis.AcumuladoDespesasAPI.buscarGrupos()
+GET   /api/acumulado/despesas/grupos/:idDespesaGrupo/tipos @apis.AcumuladoDespesasAPI.buscarTipos(idDespesaGrupo : Long)
+
+# Reservas
+GET /api/reservas                                                                               @apis.ReservaAPI.buscar()
+GET /api/reservas/:idReserva                                                        @apis.ReservaAPI.buscarPeloId(idReserva : Long)
+POST /api/reservas                                                                            @apis.ReservaAPI.salvar()
+DELETE /api/reservas/:idReserva                                                 @apis.ReservaAPI.remover(idReserva : Long)
+
+# static files
+GET    /assets/*file                                       controllers.Assets.at(path="/public", file)

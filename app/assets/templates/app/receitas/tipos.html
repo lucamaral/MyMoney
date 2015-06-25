@@ -1,0 +1,24 @@
+<ol class="breadcrumb">
+  <li><a href="#/"> Início </a></li>
+  <li class="active">Tipos de receitas</li>
+</ol>
+
+<div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Procurar tipos de receitas..." ng-model="termoParaPesquisa">
+      <span class="input-group-btn">
+          <button class="btn btn-primary" type="button" ng-click="novo()">
+              <span class="glyphicon glyphicon-plus"></span>
+              Novo
+         </button>
+      </span>
+    </div>
+
+    <div class="list-group">
+      <a href="#/receitas/tipos/{{tipoReceita.codigo}}/receitas" class="list-group-item clearfix" ng-repeat="tipoReceita in tiposReceitas | filter:termoParaPesquisa">
+          {{tipoReceita.descricao}}
+          <button type="button" class="btn btn-danger pull-right" ng-click="remover(tipoReceita.codigo);$event.preventDefault(); $event.stopPropagation();">Remover</button>
+          <button type="button" class="btn btn-success pull-right" ng-click="editar(tipoReceita);$event.preventDefault(); $event.stopPropagation();">Editar</button>
+      </a>
+    </div>
+</div>

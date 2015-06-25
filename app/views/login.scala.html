@@ -1,0 +1,47 @@
+@main("loginApp"){
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">MyMoney</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="#/novo-usuario">Cadastrar</a>
+              </li>
+              <li>
+                  <a href="#/esqueci-minha-senha">Esqueci minha senha!</a>
+              </li>
+         </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+              <div class="col-sm-6 col-centered">
+                  <div ng-view></div>
+              </div>
+      </div>
+    </div>
+    <script src="@routes.Assets.at("dist/js/login.js")"></script>
+    @defining(flash.get("erro")) { mensagemDeErro =>
+            @if(mensagemDeErro != null) {
+                <!-- Abrindo alert com erro de autenticação -->
+                <script>
+                   setTimeout(function (){
+                        swal({
+                            title: "Oops...",
+                            text : "@mensagemDeErro",
+                            type : "error",
+                            allowOutsideClick : true
+                        });
+                    }, 500);
+                </script>
+            }
+        }
+}

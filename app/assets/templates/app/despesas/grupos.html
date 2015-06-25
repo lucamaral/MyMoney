@@ -1,0 +1,24 @@
+<ol class="breadcrumb">
+  <li><a href="#/"> Início </a></li>
+  <li class="active">Grupos de Despesas</li>
+</ol>
+
+<div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Procurar grupos de despesas..." ng-model="termoParaPesquisa">
+      <span class="input-group-btn">
+          <button class="btn btn-primary" type="button" ng-click="novo()">
+              <span class="glyphicon glyphicon-plus"></span>
+              Novo
+         </button>
+      </span>
+    </div>
+
+    <div class="list-group">
+      <a href="#/despesas/grupos/{{grupoDespesa.codigo}}/tipos" class="list-group-item clearfix" ng-repeat="grupoDespesa in gruposDespesas | filter:termoParaPesquisa">
+          {{grupoDespesa.descricao}}
+          <button type="button" class="btn btn-danger pull-right" ng-click="remover(grupoDespesa.codigo); $event.preventDefault(); $event.stopPropagation();">Remover</button>
+          <button type="button" class="btn btn-success pull-right" ng-click="editar(grupoDespesa); $event.preventDefault(); $event.stopPropagation();">Editar</button>
+      </a>
+    </div>
+</div>

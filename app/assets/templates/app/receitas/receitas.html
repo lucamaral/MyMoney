@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-6 col-sm-8 col-xs-12 col-centered">
+        <form ng-submit="salvar(receita)">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-header">
+                        <h1 style="display:inline;">Receita</h1>
+                        <div class="pull-right" ng-show="receita.codigo">
+                            <button type="button" class="btn btn-danger" ng-click="remover(receita.codigo);"> Remover </button>
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" class="form-control" ng-model="receita.descricao" placeholder="Descrição da receita aqui...">
+            </div>
+            <div class="form-group">
+                <label>Tipo de receita</label>
+                <select class="form-control" ng-model="receita.idReceitaTipo" ng-options="tipoReceita.codigo as tipoReceita.descricao for tipoReceita in tiposReceitas">
+                    <option value=""> -- Selecione um tipo de receita -- </option>
+                </select>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-xs-6" style="padding-left: 0px;">
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <label>Data de recebimento prevista </label>
+                        <p>
+                            {{ receita.dataPrevista | date:'dd-MM-yyyy' }}
+                        </p>
+                    </div>
+                    <div class="col-xs-4" style="padding-right: 0px;">
+                        <div class="dropdown calendar">
+                            <a class="btn btn-primary dropdown-toggle pull-right" id="dataPrevistaAnchor" role="button" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </a>
+                            <ul class="dropdown-menu calendar" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="receita.dataPrevista" data-datetimepicker-config="{ dropdownSelector: '#dataPrevistaAnchor', minView:'day' }" />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0px;">
+                    <div class="col-xs-8" style="padding-right: 0px;">
+                        <label>Data real de recebimento </label>
+                        <p>
+                            {{ (receita.dataRecebimento | date:'dd-MM-yyyy') || "--/--/----" }}
+                        </p>
+                    </div>
+                    <div class="col-xs-4" style="padding-right: 0px;">
+                        <div class="dropdown calendar">
+                            <a class="btn btn-primary dropdown-toggle pull-right" id="dataRecebimentoAnchor" role="button" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="receita.dataRecebimento" data-datetimepicker-config="{ dropdownSelector: '#dataRecebimentoAnchor', minView:'day' }" />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-xs-6" style="padding-left: 0px;">
+                    <label>Valor previsto </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="number" class="form-control" step="0.01" min="0" ng-model="receita.valorOriginal">
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0px;">
+                    <label> Valor recebido </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="number" class="form-control" step="0.01" min="0" ng-model="receita.valorRecebido">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Forma de Pagamento</label>
+                <select class="form-control" ng-model="receita.idFormaPagamento" ng-options="formaPagamento.codigo as formaPagamento.descricao for formaPagamento in formasPagamento">
+                    <option value=""> -- Selecione uma forma de pagamento -- </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success btn-block btn-lg">Salvar</button>
+        </form>
+    </div>
+</div>

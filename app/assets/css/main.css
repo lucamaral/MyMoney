@@ -1,0 +1,58 @@
+body {
+    padding-top: 70px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.page-header{
+    margin-top: 0px;
+}
+
+.page-header h1{
+    margin-top: 0px;
+}
+
+.list-group{
+    margin-top: 20px;
+}
+
+.list-group button{
+    margin-left:10px;
+}
+
+.home .col-md-4{
+    margin-bottom: 10px;
+}
+
+.home .icon{
+    font-size: 54px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.home .graficos-com-resultados{
+    width: 100%;
+    margin-top: 15px;
+}
+
+.calendar .dropdown-menu{
+    width: 322px;
+    height: 292px;
+    position:fixed;
+    left:50%;
+    top:50%;
+    margin: -141px 0 0 -161px;
+    padding: 0px;
+}
+
+.calendar .dropdown-backdrop{
+    background-color: rgba(0,0,0,.4);
+}
+
+.calendar .datetimepicker{
+    padding: 0px;
+    margin: 0px;
+}
